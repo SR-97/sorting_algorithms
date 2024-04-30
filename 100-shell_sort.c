@@ -1,35 +1,47 @@
-#include <stdio.h>
 #include "sort.h"
-
 /**
- * shell_sort - Sorts an array of integers in ascending order
- *              using the Shell sort algorithm with Knuth sequence
- * @array: The array to be sorted
- * @size: Number of elements in the array
+ * shell_sort - function
+ * @array: pointer to array
+ * @size: index of the start
+ * Return: Nothing
  */
 void shell_sort(int *array, size_t size)
 {
-    size_t gap = 1, i, j;
-    int temp;
+	size_t gap = 1, i = 0;
+	int j = 0, ii = 0, tmp;
 
-    /* Calculate initial gap using Knuth sequence */
-    while (gap < size / 3)
-        gap = gap * 3 + 1;
-
-    while (gap > 0)
-    {
-        for (i = gap; i < size; i++)
-        {
-            temp = array[i];
-            j = i;
-            while (j >= gap && array[j - gap] > temp)
-            {
-                array[j] = array[j - gap];
-                j -= gap;
-            }
-            array[j] = temp;
-        }
-        print_array(array, size);
-        gap /= 3; /* Decrease the gap using Knuth sequence */
-    }
+	if (!array || size < 2)
+		return;
+	while (gap <= size)
+		gap = gap * 3 + 1;
+	for (gap = (gap - 1) / 3; gap > 1; gap = (gap - 1) / 3)
+	{
+		for (i = 0; i + gap < size; i++)
+		{
+			if (array[i] > array[i + gap])
+			{
+				for (j = i + gap, ii = i; j >= 0 && ii >= 0 && array[ii] > array[j];
+					 j = j - gap, ii = ii - gap)
+				{
+					tmp = array[j];
+					array[j] = array[ii];
+					array[ii] = tmp;
+				}
+			}
+		}
+		print_array(array, size);
+	}
+	for (i = 1; i < size; i++)
+	{
+		if (array[i - 1] > array[i])
+		{
+			for (j = i - 1, ii = i; j >= 0 && array[ii] < array[j]; j--, ii--)
+			{
+				tmp = array[ii];
+				array[ii] = array[j];
+				array[j] = tmp;
+			}
+		}
+	}
+	print_array(array, size);
 }
