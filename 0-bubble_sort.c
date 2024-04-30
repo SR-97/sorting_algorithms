@@ -32,7 +32,6 @@ void bubble_sort_list(listint_t **list)
                 if (current->next != NULL)
                     current->next->prev = current;
                 swapped = 1;
-                print_list(*list);
             }
             else
             {
