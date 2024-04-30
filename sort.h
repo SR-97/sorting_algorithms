@@ -30,4 +30,16 @@ void quick_sort(int *array, size_t size);
 /* Shell Sort function*/
 void shell_sort(int *array, size_t size);
 
+/* Cocktail shaker Sort function*/
+void cocktail_sort_list(listint_t **list);
+
+/* Counting Sort function*/
+void counting_sort(int *array, size_t size);
+
+/* Merge Sort function*/
+void merge_sort(int *array, size_t size);
+
+/* Heap Sort function*/
+void heap_sort(int *array, size_t size);
+
 #endif /* SORT_H */
