@@ -27,4 +27,7 @@ void selection_sort(int *array, size_t size);
 /* Quick Sort function */
 void quick_sort(int *array, size_t size);
 
+/* Shell Sort function*/
+void shell_sort(int *array, size_t size);
+
 #endif /* SORT_H */
